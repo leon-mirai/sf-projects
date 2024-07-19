@@ -67,27 +67,25 @@ prompt.get(["num1", "num2"], function (err, result) {
     console.error(err);
     return;
   }
-  console.log(result.num2);
-  console.log("Command-line input received:");
-  console.log(" num1: " + result.num1);
-  console.log(" num2: " + result.num2);
 
-  const num1 = Number(result.num1);
-  const num2 = Number(result.num2);
+  const num1 = parseFloat(result.num1);
+  const num2 = parseFloat(result.num2);
 
-  const sum = num1 + num2;
-
-  console.log("Sum of numbers is " + sum);
-  console.log('"prompt": "^1.3.0"');
+  if (isNaN(num1) || isNaN(num2)) {
+    console.log("Both values entered must be numbers.");
+  } else {
+    const sum = num1 + num2;
+    console.log(`Sum of the numbers is ${sum}`);
+  }
 
   // Task 5
   // 1.
   const convUpperCase1 = function (value) {
     return value.toUpperCase();
   };
-  console.log(convUpperCase1("hello"));
+  console.log(convUpperCase1("using function expression"));
 
   // 2.
   const convUpperCase = (value) => value.toUpperCase();
-  console.log(convUpperCase("hello"));
+  console.log(convUpperCase("using arrow function"));
 });
